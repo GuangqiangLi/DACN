@@ -12,17 +12,13 @@ class DCNN1D(nn.Module):
     def __init__(self, num_classes: int = 18, dropout: float = 0.5) -> None:
         super().__init__()
         self.features = nn.Sequential(
-            # nn.Conv1d(50, 512, kernel_size=3, stride=1, padding=1),
             nn.Conv1d(50, 128, kernel_size=3, stride=1, padding=1),
             nn.MaxPool1d(2,2),
-            # nn.BatchNorm1d(64),
             nn.ReLU(),
             nn.Conv1d(128, 128, kernel_size=3, stride=1, padding=1),
             nn.MaxPool1d(2, 2),
-            # nn.BatchNorm1d(64),
             nn.ReLU(),
             nn.Conv1d(128, 128, kernel_size=3, stride=1, padding=1),
-            # nn.BatchNorm1d(64),
             nn.ReLU(),
         )
         self.classifier = nn.Sequential(
